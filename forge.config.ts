@@ -51,6 +51,7 @@ const config: ForgeConfig = {
       path.join(import.meta.dirname, 'vendor', 'toolchain'),
       path.join(import.meta.dirname, 'THIRD-PARTY-NOTICES.md'),
       `${appIconBase}.png`,
+      `${appIconBase}.ico`,
     ],
     // No appVersion here, on any platform. The packager writes it into the packaged app's own
     // package.json, so that app.getVersion() returns it (@electron/packager 20 does; 18 only wrote it
@@ -85,6 +86,8 @@ const config: ForgeConfig = {
   makers: [
     new MakerSquirrel({
       setupIcon: `${appIconBase}.ico`,
+      // Squirrel's installed-program entry requires a public URL, not a local path.
+      iconUrl: 'https://gustavommcv.github.io/mangabound/mangabound.ico',
     }),
     // win32 added alongside darwin: unzip-and-run, no installer, no admin rights needed - this
     // project's answer to a portable Windows build. Investigated a dedicated MSI wizard maker
