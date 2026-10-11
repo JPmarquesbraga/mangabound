@@ -1,3 +1,5 @@
+import path from 'node:path';
+
 import { app, BrowserWindow, type BrowserWindowConstructorOptions } from 'electron';
 
 import { rendererUrl } from './app-protocol';
@@ -14,6 +16,9 @@ export const createMainWindow = (): BrowserWindow => {
         // title bar in the page, which draws no line of its own for that reason (see Titlebar).
         { titleBarOverlay: { color: '#121214', height: 48, symbolColor: '#e8e8eb' } };
   const window = new BrowserWindow({
+    icon: app.isPackaged
+      ? path.join(process.resourcesPath, 'mangabound.png')
+      : path.join(app.getAppPath(), 'assets', 'icons', 'mangabound.png'),
     // Electron cannot read CSS variables: these hex values are the theme's --background and
     // --foreground from src/renderer/styles.css. Keep them in step. No show:false/'ready-to-show':
     // Electron's own docs recommend showing immediately on a matching backgroundColor instead, for
