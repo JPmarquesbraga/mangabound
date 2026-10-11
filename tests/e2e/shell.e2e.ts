@@ -52,7 +52,7 @@ describe('packaged application shell', () => {
         },
         path.join(resources, `mangabound.${extension}`),
       );
-      assert.equal(icon?.empty, false);
+      assert.equal(icon.empty, false);
       assert.ok(icon.size.width > 0 && icon.size.height > 0);
     },
   );
